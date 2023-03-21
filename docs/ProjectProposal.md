@@ -25,6 +25,8 @@ The following is a list of used packages and their purpose:
 - Platypus -> post-processing of mapping, haplotype construction, and variant calling
 
 ### Output
+The main output of Fast-GBS is a Variant Call Format (VCF) file containing data on all found variants.
+Accompanying the VCF file are a text file containing only the genotypic data and a log file.
 
 ## Research question
 
