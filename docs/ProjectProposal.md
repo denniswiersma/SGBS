@@ -32,5 +32,9 @@ Accompanying the VCF file are a text file containing only the genotypic data and
 How much does remaking Fast-GBS using snakemake benefit the pipeline's performance and ease of use?
 
 ## Testing
+Testing of the pipline, while it is still under development, will be performed by feeding a (yet to be determined) rather small FASTQ file into the pipeline.
+Using this smaller FASTQ file will ensure a rapid pace of development.  
+Testing of performance of the final product will be done by reproducing one or multiple of the analysis procedures described by the original paper. 
+An analysis like this may take hours to complete, so the amount of benchmarking done will depend on the available amount of time left before the deadline.
 
 ## Visualising results
