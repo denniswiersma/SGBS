@@ -38,3 +38,5 @@ Testing of performance of the final product will be done by reproducing one or m
 An analysis like this may take hours to complete, so the amount of benchmarking done will depend on the available amount of time left before the deadline.
 
 ## Visualising results
+Benchmarking of the pipelines performance may be visualised by producing a report containing one or multiple bar graphs comparing said performance.
+Apart from this, a DAG file visualising the pipeline will be included.
