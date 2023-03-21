@@ -17,6 +17,12 @@ Next to this it also uses a configuration file (referred to as parameter file) w
 These paths can refer to the input FASTQ file, a reference genome file, or a file containing barcodes.
 
 ### Steps
+Fast-GBS uses publicly available packages for its main analysis pipeline, while using internally developed scripts to guide the process and create directories.
+The following is a list of used packages and their purpose:
+- Sabre -> demultiplexing
+- Cutadapt -> trimming & cleaning
+- BWA -> alignment
+- Platypus -> post-processing of mapping, haplotype construction, and variant calling
 
 ### Output
 
