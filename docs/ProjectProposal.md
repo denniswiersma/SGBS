@@ -18,11 +18,11 @@ These paths can refer to the input FASTQ file, a reference genome file, or a fil
 
 ### Steps
 Fast-GBS uses publicly available packages for its main analysis pipeline, while using internally developed scripts to guide the process and create directories.
-The following is a list of used packages and their purpose:
-- Sabre -> demultiplexing
-- Cutadapt -> trimming & cleaning
-- BWA -> alignment
-- Platypus -> post-processing of mapping, haplotype construction, and variant calling
+The following is a list of used packages and their purpose:  
+- Sabre -> demultiplexing  
+- Cutadapt -> trimming & cleaning  
+- BWA -> alignment  
+- Platypus -> post-processing of mapping, haplotype construction, and variant calling  
 
 ### Output
 The main output of Fast-GBS is a Variant Call Format (VCF) file containing data on all found variants.
