@@ -12,6 +12,9 @@ Fast-GBS attempts to to simplify the process of performing genotyping on the hug
 It is capable of handling data from different sequencing platforms and can automatically detect different types of variants.
 
 ### Input
+Fast-GBS takes a FASTQ file containing sequenced DNA fragments from any restriction enzyme–based GBS protocol as its main input. 
+Next to this it also uses a configuration file (referred to as parameter file) which contains processing options as well as file paths.
+These paths can refer to the input FASTQ file, a reference genome file, or a file containing barcodes.
 
 ### Steps
 
