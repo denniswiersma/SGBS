@@ -29,6 +29,7 @@ The main output of Fast-GBS is a Variant Call Format (VCF) file containing data 
 Accompanying the VCF file are a text file containing only the genotypic data and a log file.
 
 ## Research question
+How much does remaking Fast-GBS using snakemake benefit the pipeline's performance and ease of use?
 
 ## Testing
 
