@@ -1,6 +1,14 @@
 # SGBS
 Snake Genotyping By Sequencing. A reimplementation of Fast-GBS using snakemake.
 
+## Usage
+
+## Divergence from Fast-GBS
+
+### Improvements
+
+### Changes
+
 ## Gathering test data
 The original paper, which can be found in this repository at `/docs/Fast-GBSPaper.pdf`, says the following about the data used to test the pipeline:  
 "To test the performance of Fast-GBS, we used existing sequence datasets for panels of 24 unrelated accessions / clones for three species covering a range of genomic situations: soybean [22], barley [Abed et al., unpublished], and potato [Bastien et al., unpublished]."
