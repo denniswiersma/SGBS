@@ -36,3 +36,5 @@ SRR2073063
 
 This data can be downloaded using the [NCBI SRA Toolkit](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software) and using the `fasterq-dump SRR2073085` command.
 Alternatively, the data can first be downloaded as `SRR2073085.sra` using the `prefetch SRR2073085` command. This will download the data to the directory set up during the SRA Toolkit installation. The data can then be converted to fastq format using the `fasterq-dump SRR2073085` command.
+
+Additionally a reference genome is needed. For this a reference genome for Glycine max (soybean) was used, which can be downloaded from [here](https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000004515.6/).
