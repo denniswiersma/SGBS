@@ -7,6 +7,9 @@ reference: resources/reference.fna
 # Adapter sequence to be trimmed
 adapter: AGATCGGAA
 
+# Path to the barcodes used for demultiplexing
+barcodes: resources/barcodes.fasta
+
 # Minimum read length
 min_read_length: 50
 
