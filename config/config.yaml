@@ -2,7 +2,7 @@
 technology: illumina
 
 # Path to the reference genome
-reference: resources/reference.fasta
+reference: resources/reference.fna
 
 # Adapter sequence to be trimmed
 adapter: AGATCGGAA
