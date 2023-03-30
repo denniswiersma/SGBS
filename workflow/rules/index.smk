@@ -1,3 +1,5 @@
+configfile: "config/config.yaml"
+
 rule bwa_index:
     """
     Index reference genome with BWA.
@@ -10,7 +12,7 @@ rule bwa_index:
         config["reference"] + ".bwt",
         config["reference"] + ".pac",
         config["reference"] + ".sa"
-    message: "Indexing reference genome with BWA"
+    message: "Indexing reference genome with BWA. This may take a few minutes."
     log:
         "logs/bwa_index.log"
     shell:
@@ -24,7 +26,7 @@ rule samtools_index:
         reference = config["reference"]
     output:
         config["reference"] + ".fai"
-    message: "Indexing reference genome with samtools"
+    message: "Indexing reference genome with samtools."
     log:
         "logs/samtools_index.log"
     shell:
