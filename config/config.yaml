@@ -1,0 +1,14 @@
+# Sequencing technology, either 'illumina' or 'iontorrent'
+technology: illumina
+
+# Path to the reference genome
+reference: resources/reference.fasta
+
+# Adapter sequence to be trimmed
+adapter: AGATCGGAA
+
+# Minimum read length
+min_read_length: 50
+
+# PLATYPUS: Minimum number of supporting reads required before a variant candidate will be considered
+platypus_min_reads: 2
