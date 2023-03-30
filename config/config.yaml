@@ -4,8 +4,8 @@ technology: illumina
 # Path to the reference genome
 reference: resources/reference.fna
 
-# Adapter sequence to be trimmed
-adapter: AGATCGGAA
+# Path to the adapter sequences for trimming
+adapter: resources/adapters.fasta
 
 # Path to the barcodes used for demultiplexing
 barcodes: resources/barcodes.fasta
