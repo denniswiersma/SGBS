@@ -1,6 +1,9 @@
 # Sequencing technology, either 'illumina' or 'iontorrent'
 technology: illumina
 
+# Path to the input data
+data: resources/data
+
 # Path to the reference genome
 reference: resources/reference.fna
 
