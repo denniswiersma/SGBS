@@ -1,4 +1,7 @@
 rule bwa_index:
+    """
+    Index reference genome with BWA.
+    """
     input:
         reference = config["reference"]
     output:
@@ -14,6 +17,9 @@ rule bwa_index:
         "(bwa index -a bwtsw {input.reference}) >{log} 2>&1"
 
 rule samtools_index:
+    """
+    Index reference genome with samtools.
+    """
     input:
         reference = config["reference"]
     output:
