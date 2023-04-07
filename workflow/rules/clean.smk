@@ -1,7 +1,15 @@
 import pathlib
 import re
+from Bio import SeqIO
 
 configfile: "config/config.yaml"
+
+def get_barcodes():
+    barcode_file = config["barcodes"]
+    barcodes = []
+    for record in SeqIO.parse(barcode_file, "fasta"):
+        barcodes.append(record.id)
+    return barcodes
 
 def get_sample_metadata(path: str) -> dict[str, list[str]]:
     """
@@ -31,15 +39,41 @@ def get_sample_metadata(path: str) -> dict[str, list[str]]:
                     samples[sample_name] = [file.name]
     return samples
 
+rule all:
+    input:
+        expand("resources/data/trimmed/{sample}_{barcode}_1.fastq.gz", barcode=get_barcodes(), sample=get_sample_metadata(config["data"]).keys()),
+        expand("resources/data/trimmed/{sample}_{barcode}_2.fastq.gz", barcode=get_barcodes(), sample=get_sample_metadata(config["data"]).keys())
+
+
+
 rule demultiplex:
     """
     Demultiplex fastq files using flexbar"""
     input:
-        forward_read = expand("resources/data/{sample[0]}", sample=get_sample_metadata(config["data"]).values()),
-        reverse_read = expand("resources/data/{sample[1]}", sample=get_sample_metadata(config["data"]).values())
+        forward_read="resources/data/{sample}_1.fq.gz",
+        reverse_read="resources/data/{sample}_2.fq.gz"
     output:
-        samples = "resources/data/demultiplexed/{barcode}.fastq.gz"
+        forward_demultiplexed="resources/data/demultiplexed/{sample}_barcode_{barcode}_1.fastq.gz",
+        reverse_demultiplexed="resources/data/demultiplexed/{sample}_barcode_{barcode}_2.fastq.gz",
+        forward_unassigned="resources/data/demultiplexed/{sample}_barcode_unassigned_{barcode}_1.fastq.gz",
+        reverse_unassigned="resources/data/demultiplexed/{sample}_barcode_unassigned_{barcode}_2.fastq.gz",
+
     message: "Demultiplexing {input}"
-    log: "logs/demultiplexing_{barcode}.log"
+    log: "logs/demultiplexing_{sample}_{barcode}.log"
     shell:
-        "(flexbar -r {input.forward_read} -p {input.reverse_read} --barcodes {config[barcodes]} --target resources/data/demultiplexed/flexbarOut --barcode-unassigned --zip-output GZ) >{log} 2>&1"
+        "(flexbar -r {input.forward_read} -p {input.reverse_read} --barcodes {config[barcodes]} --target resources/data/demultiplexed/{wildcards.sample} --barcode-unassigned --zip-output GZ) >{log} 2>&1"
+
+
+rule trim_adapters:
+    """
+    Trim adapters from fastq files"""
+    input:
+        forward_read="resources/data/demultiplexed/{sample}_barcode_{barcode}_1.fastq.gz",
+        reverse_read="resources/data/demultiplexed/{sample}_barcode_{barcode}_2.fastq.gz"
+    output:
+        forward_read="resources/data/trimmed/{sample}_{barcode}_1.fastq.gz",
+        reverse_read="resources/data/trimmed/{sample}_{barcode}_2.fastq.gz"
+    message: "Trimming adapters from {input}"
+    log: "logs/adapter_trimming_{sample}_{barcode}.log"
+    shell:
+        "(flexbar -r {input.forward_read} -p {input.reverse_read} -a {config[adapter]} -t resources/data/trimmed/{wildcards.sample}_{wildcards.barcode} --zip-output GZ) > {log} 2>&1"
