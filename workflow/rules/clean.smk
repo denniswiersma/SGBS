@@ -39,12 +39,6 @@ def get_sample_metadata(path: str) -> dict[str, list[str]]:
                     samples[sample_name] = [file.name]
     return samples
 
-rule all:
-    input:
-        expand("resources/data/trimmed/{sample}_{barcode}_1.fastq.gz", barcode=get_barcodes(), sample=get_sample_metadata(config["data"]).keys()),
-        expand("resources/data/trimmed/{sample}_{barcode}_2.fastq.gz", barcode=get_barcodes(), sample=get_sample_metadata(config["data"]).keys())
-
-
 
 rule demultiplex:
     """
