@@ -72,4 +72,4 @@ Last but not least, adapters and barcodes should be provided in fasta format. Th
 - [picard](https://broadinstitute.github.io/picard/)
 
 ## DAG
-[DAG of pipeline](dag.png)
+![DAG of pipeline](dag.png)
