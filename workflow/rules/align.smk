@@ -16,8 +16,9 @@ rule align:
     log:
         "logs/bwa/align_{sample}_{barcode}.log"
     message: "Aligning {input.forward_read} and {input.reverse_read} to reference genome"
+    threads: config["bwa_align_threads"]
     shell:
-        "bwa mem {config[reference]} {input.forward_read} {input.reverse_read} > {output} 2> {log}"
+        "bwa mem -t {threads} {config[reference]} {input.forward_read} {input.reverse_read} > {output} 2> {log}"
 
 rule post_processing_view:
     """
