@@ -3,7 +3,7 @@ Snake Genotyping By Sequencing. A reimplementation of Fast-GBS using snakemake.
 
 ## Usage
 
-First make a conda environment using the `environment.yaml` file:
+First make a conda environment using the `environment.yaml` file:  
 `conda env create -f environment.yml`
 
 Make sure you have:
