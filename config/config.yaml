@@ -10,8 +10,23 @@ adapter: resources/adapters.fasta
 # Path to the barcodes used for demultiplexing
 barcodes: resources/barcodes.fasta
 
+### Trimming parameters ###
 # Minimum read length
 min_read_length: 50
 
-# PLATYPUS: Minimum number of supporting reads required before a variant candidate will be considered
+### Platypus parameters ###
+# Minimum number of supporting reads required before a variant candidate will be considered
 platypus_min_reads: 2
+# Minimum mapping quality of reads supporting a variant candidate
+platypus_min_mapq: 20
+# Minimum base quality of bases supporting a variant candidate
+platypus_min_baseq: 20
+# Boolean on whether to call indels
+platypus_indel_size: 1
+
+### Multiprocessing ###
+flexbar_demultiplex_threads: 1 # Tends to be slower with more threads. Probably due to disk I/O.
+flexbar_trim_threads: 4
+bwa_index_threads: 4
+bwa_align_threads: 4
+platypus_threads: 4
