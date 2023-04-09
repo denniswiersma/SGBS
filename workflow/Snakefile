@@ -9,10 +9,19 @@ import re
 from Bio import SeqIO
 
 def get_barcodes():
+    """
+    Fetch barcodes from a fasta file
+    :return: A list of barcodes
+    """
+    # Get path to barcode file
     barcode_file = config["barcodes"]
+    # Initialise list to store barcodes
     barcodes = []
+    # Iterate over records in barcode file
     for record in SeqIO.parse(barcode_file, "fasta"):
+        # Append barcode to list
         barcodes.append(record.id)
+
     return barcodes
 
 def get_sample_metadata(path: str) -> dict[str, list[str]]:

@@ -2,7 +2,8 @@ configfile: "config/config.yaml"
 
 rule demultiplex:
     """
-    Demultiplex fastq files using flexbar"""
+    Demultiplex fastq files using flexbar
+    """
     input:
         forward_read="resources/data/{sample}_1.fq.gz",
         reverse_read="resources/data/{sample}_2.fq.gz"
@@ -18,7 +19,8 @@ rule demultiplex:
 
 rule trim_adapters:
     """
-    Trim adapters from fastq files"""
+    Trim adapters from fastq files
+    """
     input:
         forward_read="resources/data/demultiplexed/{sample}_barcode_{barcode}_1.fastq.gz",
         reverse_read="resources/data/demultiplexed/{sample}_barcode_{barcode}_2.fastq.gz"
