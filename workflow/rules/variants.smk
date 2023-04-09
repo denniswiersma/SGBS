@@ -7,6 +7,7 @@ rule create_sequence_dict:
         ref_name + ".dict"
     log:
         "logs/gatk/create_sequence_dict.log"
+    conda: "SGBS"
     shell:
         "(picard CreateSequenceDictionary R={input.reference} O={output}) >{log} 2>&1"
 

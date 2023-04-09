@@ -13,6 +13,7 @@ rule bwa_index:
         config["reference"] + ".pac",
         config["reference"] + ".sa"
     message: "Indexing reference {input} with BWA."
+    conda: "SGBS"
     log:
         "logs/bwa/bwa_index.log"
     params:
@@ -29,6 +30,7 @@ rule samtools_index:
     output:
         config["reference"] + ".fai"
     message: "Indexing reference {input} with samtools."
+    conda: "SGBS"
     log:
         "logs/samtools/samtools_index.log"
     shell:

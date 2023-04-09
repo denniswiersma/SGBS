@@ -16,6 +16,7 @@ rule align:
     log:
         "logs/bwa/align_{sample}_{barcode}.log"
     message: "Aligning {input.forward_read} and {input.reverse_read} to reference genome"
+    conda: "SGBS"
     threads: config["bwa_align_threads"]
     shell:
         "bwa mem -t {threads} {config[reference]} {input.forward_read} {input.reverse_read} > {output} 2> {log}"
@@ -31,6 +32,7 @@ rule post_processing_view:
     log:
         "logs/samtools/view_{sample}_{barcode}.log"
     message: "Post-processing {input} with samtools view"
+    conda: "SGBS"
     shell:
         "(samtools view -bSh {input} > {output}) >{log} 2>&1"
 
@@ -45,6 +47,7 @@ rule post_processing_sort:
     log:
         "logs/samtools/sort_{sample}_{barcode}.log"
     message: "Post-processing {input} with samtools sort"
+    conda: "SGBS"
     shell:
         "(samtools sort {input} -o {output}) >{log} 2>&1"
 
@@ -59,5 +62,6 @@ rule post_processing_index:
     log:
         "logs/samtools/index_{sample}_{barcode}.log"
     message: "Post-processing {input} with samtools index"
+    conda: "SGBS"
     shell:
         "(samtools index {input}) >{log} 2>&1"
