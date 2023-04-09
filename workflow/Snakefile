@@ -54,4 +54,5 @@ def get_sample_metadata(path: str) -> dict[str, list[str]]:
 
 rule all:
     input:
-        expand("resources/data/processed/{sample}_{barcode}_sorted.bam.bai", sample=get_sample_metadata(config["data"]).keys(), barcode=get_barcodes())
+        expand("resources/data/processed/{sample}_{barcode}_sorted.bam.bai",
+            sample=get_sample_metadata(config["data"]).keys(), barcode=get_barcodes())
