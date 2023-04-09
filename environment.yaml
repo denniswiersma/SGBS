@@ -1,0 +1,13 @@
+name: SGBS
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.10
+  - biopython
+  - snakemake
+  - bwa
+  - samtools
+  - flexbar
+  - gatk4
+  - picard
