@@ -12,11 +12,13 @@ rule bwa_index:
         config["reference"] + ".bwt",
         config["reference"] + ".pac",
         config["reference"] + ".sa"
-    message: "Indexing reference genome with BWA. This may take a few minutes."
+    message: "Indexing reference {input} with BWA."
     log:
-        "logs/bwa_index.log"
+        "logs/bwa/bwa_index.log"
+    params:
+        batch_size = config["bwa_index_batch_size"]
     shell:
-        "(bwa index -a bwtsw {input.reference}) >{log} 2>&1"
+        "(bwa index -a bwtsw {input.reference} -b {params.batch_size}) >{log} 2>&1"
 
 rule samtools_index:
     """
@@ -26,8 +28,8 @@ rule samtools_index:
         reference = config["reference"]
     output:
         config["reference"] + ".fai"
-    message: "Indexing reference genome with samtools."
+    message: "Indexing reference {input} with samtools."
     log:
-        "logs/samtools_index.log"
+        "logs/samtools/samtools_index.log"
     shell:
         "(samtools faidx {input.reference}) >{log} 2>&1"

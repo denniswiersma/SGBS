@@ -1,6 +1,3 @@
-# Sequencing technology, either 'illumina' or 'iontorrent'
-technology: illumina
-
 # Path to the input data
 data: resources/data
 
@@ -13,8 +10,19 @@ adapter: resources/adapters.fasta
 # Path to the barcodes used for demultiplexing
 barcodes: resources/barcodes.fasta
 
+### Trimming parameters ###
 # Minimum read length
 min_read_length: 50
 
-# PLATYPUS: Minimum number of supporting reads required before a variant candidate will be considered
-platypus_min_reads: 2
+### Gatk parameters ###
+# Minimum base quality of bases supporting a variant candidate
+gatk_min_baseq: 20
+
+### Multiprocessing ###
+flexbar_demultiplex_threads: 1 # Tends to be slower with more threads. Probably due to disk I/O.
+flexbar_trim_threads: 4
+bwa_align_threads: 4
+
+# Number of reads to process at a time using bwa index. (Indexing of reference genome)
+# Higher values are faster, but use more memory. Memory usage is roughly 8x batch size.
+bwa_index_batch_size: 100000000
