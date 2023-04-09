@@ -70,3 +70,6 @@ Last but not least, adapters and barcodes should be provided in fasta format. Th
 - [flexbar](https://github.com/seqan/flexbar)
 - [gatk](https://gatk.broadinstitute.org/hc/en-us)
 - [picard](https://broadinstitute.github.io/picard/)
+
+## DAG
+[DAG of pipeline](dag.png)
