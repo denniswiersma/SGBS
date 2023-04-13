@@ -19,7 +19,7 @@ rule align:
     conda: "SGBS"
     threads: config["bwa_align_threads"]
     shell:
-        "bwa mem -t {threads} {config[reference]} {input.forward_read} {input.reverse_read} > {output} 2> {log}"
+        "bwa mem -t {threads} -R '@RG\\tID:group1\\tSM:sample1\\tLB:library1\\tPL:illumina\\tPU:unit1' {config[reference]} {input.forward_read} {input.reverse_read} > {output} 2> {log}"
 
 rule post_processing_view:
     """
