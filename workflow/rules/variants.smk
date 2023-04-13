@@ -30,7 +30,7 @@ rule variant_calling:
         min_base_quality = config["gatk_min_baseq"],
     shell:
         "(gatk HaplotypeCaller -R {input.reference} -I {input.bam} -O {output} "
-        "--min-base-quality-score {params.min_base_quality}) >{log} 2>&1"
+        "--min-base-quality-score {params.min_base_quality} -ERC GVCF) >{log} 2>&1"
 
 rule post_variant_calling:
     """
